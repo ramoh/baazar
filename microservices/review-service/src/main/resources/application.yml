@@ -1,0 +1,31 @@
+server:
+  port: 7003
+  error:
+    include-message: always
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://localhost/review-db
+    username: administrator
+    password: welcome1
+    hikari:
+      initialization-fail-timeout: 60000
+
+logging:
+  level:
+    root: INFO
+    "[com.rajesh.microservices]": DEBUG
+    "[org.hibernate.SQL]": DEBUG
+    "[org.hibernate.type.descriptor.sql.BasicBinder]": TRACE
+
+---
+spring:
+  profiles: docker
+  datasource:
+    url: jdbc:mysql://mysql/review-db
+
+server:
+  port: 8080
